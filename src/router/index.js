@@ -39,5 +39,8 @@ const router = new VueRouter({
     mode: 'history'
 })
 
+
+
 //导出router
 export default router
+
