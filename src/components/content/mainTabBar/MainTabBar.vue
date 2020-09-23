@@ -1,5 +1,4 @@
 <template>
-  <div id="main-tab-bar">
     <tab-bar>
       <tab-bar-item path="/home">
         <img slot="item-icon" src="~assets/img/tabbar/home.svg" alt="">
@@ -22,7 +21,6 @@
         <div slot="item-text">我的</div>
       </tab-bar-item>
     </tab-bar> 
-  </div>
 </template>
   
 <script>
@@ -38,6 +36,6 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 
 </style>

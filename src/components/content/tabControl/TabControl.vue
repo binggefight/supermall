@@ -26,19 +26,21 @@ export default {
   methods: {
     itemClick(index) {
       this.currentIndex = index;
+      this.$emit('tabClick', index)
     }
   }
 
 }
 </script>
 
-<style>
+<style scoped>
   .tab-control {
     display: flex;
     text-align: center;
     font-size: 15px;
     height: 40px;
     line-height: 40px;
+    background-color: #fff;
   }
 
   .tab-control-item {
@@ -57,5 +59,4 @@ export default {
     border-bottom: 3px solid var(--color-tint);
   }
 
-  
 </style>
