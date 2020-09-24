@@ -2,40 +2,43 @@
   <div id="home" class="wrapper">
     <nav-bar class="home-nav"><div slot="center">购物街</div></nav-bar>
     
-    <scroll class="content1">
+    <scroll class="content">
       <home-swiper :banners="banners"/>
       <recommend-view :recommends="recommends"/>
       <feature-view/>
       <tab-control class="tab-control" :titles="['流行', '新款', '精选']" @tabClick="tabClick"/>
       <goods-list :goods="showGoods"/>
     </scroll>
+
+    <top-back/>
   </div>
 </template>
 
 <script>
-  
+  import HomeSwiper from './childComps/HomeSwiper'
   import RecommendView from './childComps/RecommendView'
   import FeatureView from './childComps/FeatureView'
-  import HomeSwiper from './childComps/HomeSwiper'
+ 
   
   import NavBar from 'components/common/navbar/NavBar'
   import TabControl from 'components/content/tabControl/TabControl'
   import GoodsList from 'components/content/goods/GoodsList'
   import Scroll from 'components/common/scroll/Scroll'
+  import TopBack from 'components/content/topBack/TopBack'
   
-
   import {getHomeMultidata, getHomeGoods} from 'network/home'
 
   export default {
     name: "Home",
     components: {
-      NavBar,
       HomeSwiper,
       RecommendView,
       FeatureView,
+      NavBar,
       TabControl,
       GoodsList,
-      Scroll
+      Scroll,
+      TopBack
     },
     // 数据
     data() {
@@ -131,8 +134,9 @@
     z-index: 9;
   }
 
-  .content1 {
-    overflow: hidden;
+  .content {
+    overflow: hidden;   
+
     position: absolute;
     top: 44px;
     bottom: 49px;
@@ -145,5 +149,4 @@
     overflow: hidden;
     margin-top: 44px;
   } */
-
 </style>
