@@ -1,5 +1,5 @@
 <template>
-  <div class="top-back" @click="backClick">
+  <div class="top-back">
     <img src="~assets/img/common/top.png" alt="">
   </div>
 </template>
@@ -9,9 +9,7 @@
 export default {
   name: 'TopBack',
   methods: {
-    backClick() {
-      console.log("按键被按");
-    }
+    
   }
 }
 </script>
