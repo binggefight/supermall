@@ -58,8 +58,15 @@ export default {
     //对finishPullUp进一步封装
     finishPullUp() {
       this.scroll.finishPullUp()
+    },
+
+    //对refresh进一步封装
+    refresh() {
+      // this.scroll.refresh()
+      // console.log("-------");
+      //优化
+      this.scroll && this.scroll.refresh()
     }
-    
   }
 }
 </script>
