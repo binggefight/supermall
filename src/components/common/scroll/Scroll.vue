@@ -30,12 +30,12 @@ export default {
   mounted() {
     //1.创建BSscroll对象
     this.scroll = new BScroll(this.$refs.wrapper, {
-      click: true,
       probeType: this.probeType,
-      pullUpLoad: this.pullUpLoad
+      pullUpLoad: this.pullUpLoad,
+      click: true
     })
     
-      // 2.监听滚动位置
+    // 2.监听滚动位置
     this.scroll.on('scroll', (position) => {
       // console.log(position);
       // 自定义事件向外传递position

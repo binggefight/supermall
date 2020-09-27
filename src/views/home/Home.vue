@@ -64,7 +64,8 @@
         currentType: 'pop',
         isShowTopBack: false,
         tabOffsetTop: 0,
-        isTabFixed: false
+        isTabFixed: false,
+        // saveY: 0
       }
     },
     computed: {
@@ -72,6 +73,19 @@
         return this.goods[this.currentType].list
       },
     },
+    //打印home是否销毁
+    destroyed() {
+      console.log("Home destoryed");
+    },
+    // //活跃
+    // activated() {
+    //   this.$refs.scroll.scrollTo(0, this.saveY, 0)
+    //   this.$refs.scroll.refresh()
+    // },
+    // //消亡时
+    // deactivated() {
+    //   this.saveY = this.$refs.scroll.scroll.y
+    // },
     created() {
       //1.请求多条数据
       this.getHomeMultidata()
@@ -95,7 +109,6 @@
       /**
        * 事件监听相关的方法
        */
-      
       tabClick(index) {
         // console.log(index);
         switch(index) {
