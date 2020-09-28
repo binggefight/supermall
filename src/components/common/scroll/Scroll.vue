@@ -36,18 +36,21 @@ export default {
     })
     
     // 2.监听滚动位置
-    this.scroll.on('scroll', (position) => {
-      // console.log(position);
-      // 自定义事件向外传递position
-      this.$emit('scroll', position)
-    })
-
-    //3.监听上拉加载
-    this.scroll.on('pullingUp', () => {
-      // console.log("上拉加载更多");
-      this.$emit('pullingUp')
-    })
+    if(this.probeType === 2 || this.probeType === 3) {
+        this.scroll.on('scroll', (position) => {
+        // console.log(position);
+        // 自定义事件向外传递position
+        this.$emit('scroll', position)
+      })
+    }
     
+    //3.监听上拉加载
+    if(this.pullUpLoad) {
+        this.scroll.on('pullingUp', () => {
+        // console.log("上拉加载更多");
+        this.$emit('pullingUp')
+      })
+    }
   },
   methods: {
     //对scrollTo进一步封装
