@@ -7,7 +7,6 @@
       <detail-shop-info :shop="shop"/>
       <detail-goods-info :detail-info="detailInfo" @imageLoad="imageLoad"/>
       <detail-param-info :param-info="paramInfo"/>
-      <goods-list :goods="recommends" @itemImageLoad="itemImageLoad"/>
     </scroll>
   </div>
 </template>
@@ -19,12 +18,10 @@
   import DetailShopInfo from './childComps/DetailShopInfo'
   import DetailGoodsInfo from './childComps/DetailGoodsInfo'
   import DetailParamInfo from './childComps/DetailParamInfo'
-  import DetailCommentInfo from './childComps/DetailCommentIfo'
 
   import Scroll from 'components/common/scroll/Scroll'
-  import GoodsList from 'components/content/goods/GoodsList'
 
-  import {getDetail, Goods, Shop, GoodsParam, getRecommend} from "network/detail";
+  import {getDetail, Goods, Shop, GoodsParam} from "network/detail";
 
   export default {
     name: "Detail",
@@ -35,9 +32,7 @@
       DetailShopInfo,
       DetailGoodsInfo,
       DetailParamInfo,
-      DetailCommentInfo,
-      GoodsList,
-      Scroll,
+      Scroll
     },
     data() {
       return {
@@ -46,9 +41,7 @@
         goods: {},
         shop: {},
         detailInfo: {},
-        paramInfo: {},
-        commentInfo: {},
-        recommends: []
+        paramInfo: {}
       }
     },
     created() {
@@ -58,7 +51,7 @@
       // 2.根据iid请求详情数据
       getDetail(this.iid).then(res => {
         // 1.获取顶部的图片轮播数据
-        // console.log(res);
+        console.log(res);
         const data = res.result;
         this.topImages = data.itemInfo.topImages
 
@@ -71,32 +64,16 @@
         // 4.保存商品的详情数据
         this.detailInfo = data.detailInfo;
 
-        //保存商品规格信息
+        // 5.获取参数的信息
         this.paramInfo = new GoodsParam(data.itemParams.info, data.itemParams.rule)
-
-        //保存评论信息
-        if(data.rate.cRate !== 0) {
-          this.commentInfo = data.rate.list[0]
-        }
-
-      })
-
-      // 3.详情页推荐数据
-      getRecommend().then(res => {
-        // console.log(res);
-        this.recommends = res.data.list
       })
     },
     methods: {
       imageLoad() {
         this.$refs.scroll.refresh()
-      },
-      // itemImageLoad() {
-      //   this.$bus.$refs.scroll.refresh()
-      // }
+      }
     }
   }
-  
 </script>
 
 <style scoped>

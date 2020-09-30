@@ -30,7 +30,7 @@ export default {
       this.$bus.$emit('itemImageLoad')
     },
     clickItem() {
-      //能到图片iid
+      //图片iid
       this.$router.push('/detail/' + this.goodsItem.iid)
     }
   }
