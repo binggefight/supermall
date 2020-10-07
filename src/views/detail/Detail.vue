@@ -7,6 +7,7 @@
       <detail-shop-info :shop="shop"/>
       <detail-goods-info :detail-info="detailInfo" @imageLoad="imageLoad"/>
       <detail-param-info :param-info="paramInfo"/>
+      <detail-bottom-bar/>
     </scroll>
   </div>
 </template>
@@ -18,6 +19,8 @@
   import DetailShopInfo from './childComps/DetailShopInfo'
   import DetailGoodsInfo from './childComps/DetailGoodsInfo'
   import DetailParamInfo from './childComps/DetailParamInfo'
+
+  import DetailBottomBar from './childComps/DetailBottomBar'
 
   import Scroll from 'components/common/scroll/Scroll'
 
@@ -32,6 +35,7 @@
       DetailShopInfo,
       DetailGoodsInfo,
       DetailParamInfo,
+      DetailBottomBar,
       Scroll
     },
     data() {
