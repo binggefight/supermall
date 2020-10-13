@@ -37,9 +37,11 @@
   
   import {getHomeMultidata, getHomeGoods} from 'network/home'
   import {debounce} from 'common/utils'
+  import {itemListenerMixin} from 'common/mixins'
 
   export default {
     name: "Home",
+    mixins: [itemListenerMixin],
     components: {
       HomeSwiper,
       RecommendView,
@@ -96,15 +98,15 @@
       this.getHomeGoods("sell")
     },
     mounted() {
-      // 监听item中图片加载完成
-      const refresh = debounce(this.$refs.scroll.refresh, 50)
-      this.$bus.$on('itemImageLoad', () => {
-        // console.log("----------");
-        // this.$refs.scroll.refresh()
-        refresh()
-      })
+      // // 监听item中图片加载完成
+      // const refresh = debounce(this.$refs.scroll.refresh, 50)
+      // this.$bus.$on('itemImageLoad', () => {
+      //   // console.log("----------");
+      //   // this.$refs.scroll.refresh()
+      //   refresh()
+      // })
     },
-    
+
     methods: {
       /**
        * 事件监听相关的方法
